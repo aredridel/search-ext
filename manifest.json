@@ -1,0 +1,25 @@
+{
+
+  "manifest_version": 3,
+  "name": "Search Thing",
+  "description": "Indexes what you read",
+  "version": "1.6",
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "search-thing@dinhe.net",
+      "strict_min_version": "109.0"
+    }
+  },
+
+  "permissions": [
+    "activeTab"
+  ],
+
+  "content_scripts": [{
+    "matches": ["*://*/*"],
+    "js": ["dist/main.js"],
+    "run_at": "document_end"
+  }]
+
+}

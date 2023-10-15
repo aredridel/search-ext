@@ -1,0 +1,18 @@
+{
+  "name": "search-thing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup src/background.js --file dist/background.js -p @rollup/plugin-node-resolve -p @rollup/plugin-commonjs --format esm && rollup src/main.js --file dist/main.js -p @rollup/plugin-node-resolve -p @rollup/plugin-commonjs --format esm && web-ext build --overwrite-dest"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "web-ext": "^7.8.0"
+  },
+  "dependencies": {
+    "@mozilla/readability": "^0.4.4",
+    "rollup": "^4.1.3"
+  }
+}
