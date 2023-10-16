@@ -4,11 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rollup src/background.js --file dist/background.js -p @rollup/plugin-node-resolve -p @rollup/plugin-commonjs --format esm && rollup src/main.js --file dist/main.js -p @rollup/plugin-node-resolve -p @rollup/plugin-commonjs --format esm && web-ext build --overwrite-dest"
+    "build-bg": "rollup src/background.js --file dist/background.js -p @rollup/plugin-node-resolve -p @rollup/plugin-commonjs --format esm",
+    "build-main": "rollup src/main.js --file dist/main.js -p @rollup/plugin-node-resolve -p @rollup/plugin-commonjs --format esm",
+    "develop": "concurrently npm:watch-bg npm:watch-main npm:web-ext-run npm:meilisearch",
+    "meilisearch": "meilisearch",
+    "prepare": "web-ext build --overwrite-dest",
+    "watch": "concurrently npm:watch-bg npm:watch-main npm:web-ext-run",
+    "watch-bg": "rollup src/background.js --file dist/background.js -p @rollup/plugin-node-resolve -p @rollup/plugin-commonjs --format esm --watch",
+    "watch-main": "rollup src/main.js --file dist/main.js -p @rollup/plugin-node-resolve -p @rollup/plugin-commonjs --format esm --main",
+    "web-ext-run": "web-ext run"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
+    "concurrently": "^8.2.1",
     "web-ext": "^7.8.0"
   },
   "dependencies": {

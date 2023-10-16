@@ -4,9 +4,7 @@ Install meilisearch
 
 `pnpm install`
 
-`pnpm run build`
-
-`pnpm run web-ext run` to try it out.
+`pnpm run develop`
 
 Give the extension permission to see every site you visit.
 
